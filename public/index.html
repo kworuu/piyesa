@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Piyesa — AI Bill of Materials Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button id="backBtn" class="icon-btn hidden" aria-label="Back">&lt;</button>
+    <span class="logo">P<span class="accent">i</span>yesa</span>
+  </div>
+  <nav class="topbar-right">
+    <a href="#" id="previewBomLink" class="text-link hidden">Preview BOM</a>
+    <span id="helpBotIndicator" class="bot-dot hidden" title="Help bot">&#129302;</span>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ VIEW: LANDING / UPLOAD ============ -->
+  <section id="view-landing" class="view active">
+    <div class="hero">
+      <h1>Ready to Build?</h1>
+      <p class="hero-sub">Let's Find Your Parts</p>
+      <p class="hero-desc">Drop an image, paste a tutorial link, or describe your project below. We'll identify the exact materials you need that fit your budget.</p>
+
+      <div class="upload-card">
+        <div class="upload-dropzone" id="dropzone">
+          <div class="upload-icon">&#8593;</div>
+          <p class="dropzone-label">Drag &amp; drop your schematic here</p>
+          <p class="dropzone-sub">Accepts images, or paste a tutorial URL below</p>
+          <input type="file" id="fileInput" accept="image/*" class="hidden" />
+        </div>
+
+        <div class="url-row">
+          <input type="text" id="urlInput" placeholder="https://tutorials.com/..." />
+          <button id="submitUrlBtn" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="or-divider"><span>or</span></div>
+
+        <div class="action-row">
+          <button id="uploadImagesBtn" class="btn btn-primary">&#8593; Upload Image</button>
+          <button id="describeBtn" class="btn btn-outline">&#9998; Describe Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="templates-section">
+      <h2>Suggested Projects</h2>
+      <div id="templatesGrid" class="templates-grid">
+        <!-- populated by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIEW: DESCRIBE PROJECT (text input fallback) ============ -->
+  <section id="view-describe" class="view">
+    <div class="panel-narrow">
+      <h2>Describe your project</h2>
+      <p class="muted">Tell us what you're building and what parts you think you'll need. One per line works great.</p>
+      <textarea id="describeText" rows="8" placeholder="e.g.&#10;Arduino Uno&#10;2x SG90 servo&#10;HC-SR04 ultrasonic sensor&#10;9V battery"></textarea>
+      <button id="describeSubmitBtn" class="btn btn-primary">Find My Parts</button>
+    </div>
+  </section>
+
+  <!-- ============ VIEW: BUDGET MODAL (shown over landing/templates) ============ -->
+  <div id="budgetModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="icon-btn" id="budgetCancelBtn">&lt;</button>
+      <h3>Project Budget</h3>
+      <p class="muted">Enter the amount you're willing to invest in this project (optional — leave blank for no limit)</p>
+      <input type="number" id="budgetInput" placeholder="₱0" min="0" />
+      <div class="modal-actions">
+        <button id="budgetSkipBtn" class="btn btn-outline">Skip</button>
+        <button id="budgetSubmitBtn" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VIEW: REVIEW EXTRACTED ITEMS ============ -->
+  <section id="view-review" class="view">
+    <div class="panel-narrow">
+      <h2>Review your parts list</h2>
+      <p class="muted">Edit names or quantities before we resolve them against stock.</p>
+      <div id="reviewList" class="review-list"></div>
+      <button id="addItemBtn" class="btn btn-outline btn-small">+ Add item</button>
+      <div class="review-actions">
+        <button id="resolveCartBtn" class="btn btn-primary btn-large">Resolve Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIEW: RESOLVED CART ============ -->
+  <section id="view-cart" class="view">
+    <div class="cart-layout">
+      <div class="cart-main">
+        <div class="cart-header">
+          <div>
+            <h2>Result</h2>
+            <p id="stockSummary" class="muted"></p>
+          </div>
+          <div class="legend">
+            <span class="legend-item"><i class="dot dot-green"></i>In Stock</span>
+            <span class="legend-item"><i class="dot dot-orange"></i>Low Stock</span>
+            <span class="legend-item"><i class="dot dot-red"></i>No Stock</span>
+          </div>
+        </div>
+
+        <div id="budgetBanner" class="budget-banner hidden"></div>
+
+        <div id="cartLines" class="cart-lines"></div>
+
+        <div class="cart-footer">
+          <span id="cartItemCount" class="muted"></span>
+          <div class="cart-footer-right">
+            <div class="cart-total">
+              <span class="muted">Total</span>
+              <strong id="cartTotal">₱0</strong>
+            </div>
+            <button id="checkoutBtn" class="btn btn-primary">&#128722; Checkout</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="chat-panel">
+        <div class="chat-header">
+          <span class="bot-dot">&#129302;</span>
+          <div>
+            <strong>help bot</strong>
+            <div class="online-dot">&#9679; online</div>
+          </div>
+        </div>
+        <div id="chatLog" class="chat-log"></div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Ask about parts, substitutions, pricing..." />
+          <button id="chatSendBtn" class="icon-btn-send" aria-label="Send">&#10148;</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ VIEW: BOM PREVIEW MODAL ============ -->
+  <div id="bomModal" class="modal-overlay hidden">
+    <div class="modal-card modal-card-wide">
+      <button class="icon-btn" id="bomCloseBtn">&lt;</button>
+      <h2 class="bom-title">BILL OF MATERIALS</h2>
+      <table class="bom-table">
+        <thead>
+          <tr><th>SKU</th><th>Description</th><th>Quantity</th><th>Unit Cost</th><th>Cost</th></tr>
+        </thead>
+        <tbody id="bomTableBody"></tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td><strong>Total Number of Parts</strong></td>
+            <td id="bomTotalParts"></td>
+            <td></td>
+            <td id="bomTotalCost"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button id="downloadBomBtn" class="btn btn-primary">Download BOM</button>
+    </div>
+  </div>
+
+  <!-- ============ VIEW: CHECKOUT (UI only, no real payment) ============ -->
+  <section id="view-checkout" class="view">
+    <div class="checkout-layout">
+      <div class="checkout-main">
+        <h2>Checkout</h2>
+        <div class="checkout-tabs">
+          <span class="tab active" data-step="info">Information</span>
+          <span class="tab" data-step="payment">Payment</span>
+          <span class="tab" data-step="complete">Complete Order</span>
+        </div>
+
+        <div id="checkoutStep-info" class="checkout-step active">
+          <div class="form-grid">
+            <label>Name<input type="text" id="ckName" /></label>
+            <label>Phone Number<input type="text" id="ckPhone" /></label>
+          </div>
+          <label>Email Address<input type="email" id="ckEmail" /></label>
+          <label>Delivery Address<input type="text" id="ckAddress" /></label>
+          <div class="form-grid">
+            <label>Postal Code<input type="text" id="ckPostal" /></label>
+            <label>State / Province<input type="text" id="ckState" /></label>
+          </div>
+          <label>Note (optional)<textarea id="ckNote" rows="3"></textarea></label>
+          <button id="ckToPaymentBtn" class="btn btn-primary btn-large">Proceed</button>
+        </div>
+
+        <div id="checkoutStep-payment" class="checkout-step">
+          <div class="payment-methods">
+            <button class="payment-method active" data-method="card">&#128179; Card</button>
+            <button class="payment-method" data-method="cod">&#128176; Cash on Delivery</button>
+            <button class="payment-method" data-method="ewallet">&#128241; E-wallet / GCash</button>
+          </div>
+          <div id="cardFields">
+            <label>Full Name<input type="text" id="ckCardName" /></label>
+            <label>Card Details<input type="text" id="ckCardDetails" placeholder="•••• •••• •••• ••••" /></label>
+            <div class="form-grid">
+              <label>MM/YY<input type="text" id="ckExpiry" /></label>
+              <label>CVV<input type="text" id="ckCvv" /></label>
+            </div>
+          </div>
+          <button id="ckToCompleteBtn" class="btn btn-primary btn-large">Proceed</button>
+        </div>
+
+        <div id="checkoutStep-complete" class="checkout-step">
+          <div class="form-grid">
+            <label>Order ID<input type="text" id="ckOrderId" disabled /></label>
+            <label>Email Address<input type="email" id="ckCompleteEmail" disabled /></label>
+          </div>
+          <p class="muted">Delivery Progress</p>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+            <div class="progress-steps">
+              <span class="step active">Ordered</span>
+              <span class="step">Confirmed</span>
+              <span class="step">Shipped</span>
+              <span class="step">Delivered</span>
+            </div>
+          </div>
+          <h3 class="thank-you">Thank you for your order!</h3>
+          <p class="muted center">We appreciate your support. Click below to finish processing your transaction and lock in your details.</p>
+          <button id="ckDoneBtn" class="btn btn-primary btn-large">Done</button>
+        </div>
+      </div>
+
+      <aside class="cart-sidebar">
+        <h3>Your Cart</h3>
+        <div id="checkoutCartItems" class="checkout-cart-items"></div>
+        <h4>Price Details</h4>
+        <div class="price-details">
+          <div class="price-row"><span>Items</span><span id="ckItemsPrice"></span></div>
+          <div class="price-row"><span>VAT (12%)</span><span id="ckVatPrice"></span></div>
+          <div class="price-row"><span>Shipping</span><span id="ckShippingPrice"></span></div>
+          <div class="price-row total"><span>Total</span><span id="ckTotalPrice"></span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
