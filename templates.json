@@ -1,0 +1,61 @@
+[
+  {
+    "id": "led-blink",
+    "name": "LED Blink Circuit",
+    "description": "The classic first circuit: blink an LED on and off using a microcontroller.",
+    "image_url": "/img/placeholder/template-led.svg",
+    "estimatedCost": 465,
+    "items": [
+      { "name": "Arduino Uno", "quantity": 1 },
+      { "name": "5mm Red LED", "quantity": 1 },
+      { "name": "220 ohm resistor", "quantity": 1 },
+      { "name": "Breadboard", "quantity": 1 },
+      { "name": "jumper wires male male", "quantity": 1 }
+    ]
+  },
+  {
+    "id": "line-tracer",
+    "name": "Line-Following Robot",
+    "description": "A small robot that follows a black line using IR sensors and two motors.",
+    "image_url": "/img/placeholder/template-linetracer.svg",
+    "estimatedCost": 1095,
+    "items": [
+      { "name": "Arduino Uno", "quantity": 1 },
+      { "name": "L298N motor driver", "quantity": 1 },
+      { "name": "5-channel IR sensor array", "quantity": 1 },
+      { "name": "TT gear motor with wheel", "quantity": 2 },
+      { "name": "9V battery", "quantity": 1 },
+      { "name": "jumper wires male female", "quantity": 1 },
+      { "name": "breadboard", "quantity": 1 }
+    ]
+  },
+  {
+    "id": "iot-weather-station",
+    "name": "IoT Weather Station",
+    "description": "Reads temperature and humidity and can be extended to push readings online via WiFi.",
+    "image_url": "/img/placeholder/template-weather.svg",
+    "estimatedCost": 740,
+    "items": [
+      { "name": "ESP8266 NodeMCU", "quantity": 1 },
+      { "name": "DHT22 sensor", "quantity": 1 },
+      { "name": "breadboard", "quantity": 1 },
+      { "name": "jumper wires male male", "quantity": 1 },
+      { "name": "10k ohm resistor", "quantity": 1 }
+    ]
+  },
+  {
+    "id": "smart-plant-waterer",
+    "name": "Smart Plant Waterer",
+    "description": "Detects dry soil and automatically triggers a small pump to water your plant.",
+    "image_url": "/img/placeholder/template-plant.svg",
+    "estimatedCost": 705,
+    "items": [
+      { "name": "Arduino Nano", "quantity": 1 },
+      { "name": "capacitive soil moisture sensor", "quantity": 1 },
+      { "name": "mini submersible water pump", "quantity": 1 },
+      { "name": "1-channel relay module", "quantity": 1 },
+      { "name": "9V battery", "quantity": 1 },
+      { "name": "jumper wires male female", "quantity": 1 }
+    ]
+  }
+]
