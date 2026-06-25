@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piyesa — Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="SignUp.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="form-panel">
+        <div class="form-card">
+          <div class="form-header">
+            <h2>Sign up</h2>
+            <p>It only takes a minute to get started.</p>
+          </div>
+
+          <form id="signupForm" novalidate>
+            <div class="field-group">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" placeholder="Alex Rivera" required />
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="alex@email.com" required />
+            </div>
+
+            <div class="field-group">
+              <label for="password">Password</label>
+              <div class="password-wrap">
+                <input id="password" name="password" type="password" placeholder="Create a strong password" required />
+                <button type="button" class="toggle-password" data-target="password">Show</button>
+              </div>
+              <div class="meter" aria-hidden="true">
+                <span id="meterBar"></span>
+              </div>
+              <div class="meter-labels">
+                <span id="passwordHint">Use at least 8 characters.</span>
+                <span id="strengthText">Weak</span>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="confirmPassword">Confirm password</label>
+              <div class="password-wrap">
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat password" required />
+                <button type="button" class="toggle-password" data-target="confirmPassword">Show</button>
+              </div>
+            </div>
+
+            <label class="checkbox-row" for="terms">
+              <input id="terms" name="terms" type="checkbox" required />
+              <span>I agree to the terms and privacy policy.</span>
+            </label>
+
+            <button type="submit" class="btn-primary">Create account</button>
+          </form>
+
+          <p class="switch-link">Already have an account? <a href="#">Log in</a></p>
+          <div id="formStatus" class="status-message" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="SignUp.js"></script>
+  </body>
+</html>
