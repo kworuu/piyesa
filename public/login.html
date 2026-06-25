@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Piyesa Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main>
+  <section id="view-login" class="view active">
+    <div class="login-layout">
+      <div class="login-header">
+        <span class="login-branding"><span class="brand-accent">Pi</span><span class="brand-muted">yesa</span></span>
+        <p class="login-tagline">AI Powered Bill Of Materials Generator</p>
+      </div>
+
+      <div class="login-card">
+        <h2 class="login-title">Login</h2>
+
+        <div class="login-fields">
+          <label class="login-field-row">
+            <span class="field-label">Email</span>
+            <div class="login-input-row">
+              <input type="email" id="loginEmail" placeholder="Enter your email" />
+              <img class="input-icon" src="img/drawables/ic_baseline-email.png" alt="Email icon" />
+            </div>
+          </label>
+
+          <label class="login-field-row">
+            <span class="field-label">Password</span>
+            <div class="login-input-row">
+              <input type="password" id="loginPassword" placeholder="Enter your password" />
+              <img class="input-icon" src="img/drawables/Vector.png" alt="Password icon" />
+            </div>
+          </label>
+
+          <div class="login-actions-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" />
+              Remember me
+            </label>
+            <button type="button" id="forgotPasswordBtn" class="text-link small">Forgot Password?</button>
+          </div>
+
+          <button id="loginBtn" class="btn btn-primary btn-large">Login</button>
+          <button id="guestBtn" class="btn btn-outline btn-large">Continue as guest</button>
+        </div>
+
+        <p class="login-footer muted">Don’t have an account? <button type="button" id="registerBtn" class="text-link">Register</button></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast hidden"></div>
+<script src="login.js"></script>
+</body>
+</html>
