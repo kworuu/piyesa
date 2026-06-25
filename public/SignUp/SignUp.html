@@ -12,58 +12,65 @@
     <link rel="stylesheet" href="SignUp.css" />
   </head>
   <body>
-    <main class="page-shell">
-      <section class="form-panel">
-        <div class="form-card">
-          <div class="form-header">
-            <h2>Sign up</h2>
-            <p>It only takes a minute to get started.</p>
+    <main>
+      <section class="page-shell">
+        <div class="login-layout">
+          <div class="login-header">
+            <span class="login-branding"><span class="brand-accent">Pi</span><span class="brand-muted">yesa</span></span>
+            <p class="login-tagline">AI Powered Bill Of Materials Generator</p>
           </div>
 
-          <form id="signupForm" novalidate>
-            <div class="field-group">
-              <label for="fullName">Full name</label>
-              <input id="fullName" name="fullName" type="text" placeholder="Alex Rivera" required />
-            </div>
+          <div class="login-card">
+            <h2 class="login-title">Sign up</h2>
 
-            <div class="field-group">
-              <label for="email">Email address</label>
-              <input id="email" name="email" type="email" placeholder="alex@email.com" required />
-            </div>
+            <form id="signupForm" novalidate class="login-fields">
+              <label class="login-field-row">
+                <span class="field-label">Username</span>
+                <div class="login-input-row">
+                  <input id="fullName" name="fullName" type="text" placeholder="Username" required />
+                </div>
+              </label>
 
-            <div class="field-group">
-              <label for="password">Password</label>
-              <div class="password-wrap">
-                <input id="password" name="password" type="password" placeholder="Create a strong password" required />
-                <button type="button" class="toggle-password" data-target="password">Show</button>
-              </div>
-              <div class="meter" aria-hidden="true">
-                <span id="meterBar"></span>
-              </div>
-              <div class="meter-labels">
-                <span id="passwordHint">Use at least 8 characters.</span>
-                <span id="strengthText">Weak</span>
-              </div>
-            </div>
+              <label class="login-field-row">
+                <span class="field-label">Email</span>
+                <div class="login-input-row">
+                  <input id="email" name="email" type="email" placeholder="Enter your email address" required />
+                </div>
+              </label>
 
-            <div class="field-group">
-              <label for="confirmPassword">Confirm password</label>
-              <div class="password-wrap">
-                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat password" required />
-                <button type="button" class="toggle-password" data-target="confirmPassword">Show</button>
-              </div>
-            </div>
+              <label class="login-field-row">
+                <span class="field-label">Password</span>
+                <div class="login-input-row password-wrap">
+                  <input id="password" name="password" type="password" placeholder="Create a strong password" required />
+                  <button type="button" class="toggle-password" data-target="password">Show</button>
+                </div>
+                <div class="meter" aria-hidden="true">
+                  <span id="meterBar"></span>
+                </div>
+                <div class="meter-labels">
+                  <span id="strengthText">Weak</span>
+                </div>
+              </label>
 
-            <label class="checkbox-row" for="terms">
-              <input id="terms" name="terms" type="checkbox" required />
-              <span>I agree to the terms and privacy policy.</span>
-            </label>
+              <label class="login-field-row">
+                <span class="field-label">Confirm password</span>
+                <div class="login-input-row password-wrap">
+                  <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat password" required />
+                  <button type="button" class="toggle-password" data-target="confirmPassword">Show</button>
+                </div>
+              </label>
 
-            <button type="submit" class="btn-primary">Create account</button>
-          </form>
+              <label class="checkbox-label" for="terms">
+                <input id="terms" name="terms" type="checkbox" required />
+                <span>I agree to the terms and privacy policy.</span>
+              </label>
 
-          <p class="switch-link">Already have an account? <a href="#">Log in</a></p>
-          <div id="formStatus" class="status-message" role="status" aria-live="polite"></div>
+              <button type="submit" class="btn btn-primary btn-large">Create account</button>
+            </form>
+
+            <p class="login-footer">Already have an account? <a href="#" class="text-link">Log in</a></p>
+            <div id="formStatus" class="status-message" role="status" aria-live="polite"></div>
+          </div>
         </div>
       </section>
     </main>
