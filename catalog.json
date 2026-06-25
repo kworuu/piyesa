@@ -1,0 +1,44 @@
+[
+  { "sku": "MCU-UNO-R3", "name": "Arduino Uno R3", "category": "microcontroller", "packSize": 1, "packPrice": 350, "stock": 14, "image_url": "/img/placeholder/mcu.svg", "compatibleWith": ["MCU-UNO-CLONE", "MCU-NANO"] },
+  { "sku": "MCU-UNO-CLONE", "name": "Uno R3 Compatible Board (Clone)", "category": "microcontroller", "packSize": 1, "packPrice": 220, "stock": 30, "image_url": "/img/placeholder/mcu.svg", "compatibleWith": ["MCU-UNO-R3", "MCU-NANO"] },
+  { "sku": "MCU-NANO", "name": "Arduino Nano", "category": "microcontroller", "packSize": 1, "packPrice": 280, "stock": 20, "image_url": "/img/placeholder/mcu.svg", "compatibleWith": ["MCU-UNO-R3", "MCU-UNO-CLONE"] },
+  { "sku": "MCU-ESP32", "name": "ESP32 DevKit", "category": "microcontroller", "packSize": 1, "packPrice": 420, "stock": 0, "image_url": "/img/placeholder/mcu.svg", "compatibleWith": ["MCU-ESP8266"] },
+  { "sku": "MCU-ESP8266", "name": "ESP8266 NodeMCU", "category": "microcontroller", "packSize": 1, "packPrice": 260, "stock": 18, "image_url": "/img/placeholder/mcu.svg", "compatibleWith": ["MCU-ESP32"] },
+
+  { "sku": "SEN-IR-5CH", "name": "5-Channel IR Sensor Array (Line Tracking)", "category": "sensor", "packSize": 1, "packPrice": 180, "stock": 12, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-IR-3CH"] },
+  { "sku": "SEN-IR-3CH", "name": "3-Channel IR Sensor Array", "category": "sensor", "packSize": 1, "packPrice": 120, "stock": 25, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-IR-5CH"] },
+  { "sku": "SEN-ULTRASONIC", "name": "HC-SR04 Ultrasonic Distance Sensor", "category": "sensor", "packSize": 1, "packPrice": 90, "stock": 0, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-ULTRASONIC-WP"] },
+  { "sku": "SEN-ULTRASONIC-WP", "name": "JSN-SR04T Waterproof Ultrasonic Sensor", "category": "sensor", "packSize": 1, "packPrice": 160, "stock": 9, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-ULTRASONIC"] },
+  { "sku": "SEN-DHT22", "name": "DHT22 Temp/Humidity Sensor", "category": "sensor", "packSize": 1, "packPrice": 220, "stock": 11, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-DHT11"] },
+  { "sku": "SEN-DHT11", "name": "DHT11 Temp/Humidity Sensor", "category": "sensor", "packSize": 1, "packPrice": 95, "stock": 30, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-DHT22"] },
+  { "sku": "SEN-SOIL", "name": "Capacitive Soil Moisture Sensor", "category": "sensor", "packSize": 1, "packPrice": 130, "stock": 16, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-SOIL-RES"] },
+  { "sku": "SEN-SOIL-RES", "name": "Resistive Soil Moisture Sensor", "category": "sensor", "packSize": 1, "packPrice": 60, "stock": 22, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": ["SEN-SOIL"] },
+  { "sku": "SEN-PIR", "name": "PIR Motion Sensor (HC-SR501)", "category": "sensor", "packSize": 1, "packPrice": 85, "stock": 19, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": [] },
+  { "sku": "SEN-LDR", "name": "LDR Light Sensor Module", "category": "sensor", "packSize": 1, "packPrice": 45, "stock": 28, "image_url": "/img/placeholder/sensor.svg", "compatibleWith": [] },
+
+  { "sku": "DRV-L298N", "name": "L298N Motor Driver Module", "category": "driver", "packSize": 1, "packPrice": 150, "stock": 8, "image_url": "/img/placeholder/driver.svg", "compatibleWith": ["DRV-TB6612"] },
+  { "sku": "DRV-TB6612", "name": "TB6612FNG Motor Driver Module", "category": "driver", "packSize": 1, "packPrice": 175, "stock": 14, "image_url": "/img/placeholder/driver.svg", "compatibleWith": ["DRV-L298N"] },
+  { "sku": "DRV-RELAY-1CH", "name": "1-Channel Relay Module (5V)", "category": "driver", "packSize": 1, "packPrice": 65, "stock": 24, "image_url": "/img/placeholder/driver.svg", "compatibleWith": ["DRV-RELAY-2CH"] },
+  { "sku": "DRV-RELAY-2CH", "name": "2-Channel Relay Module (5V)", "category": "driver", "packSize": 1, "packPrice": 110, "stock": 17, "image_url": "/img/placeholder/driver.svg", "compatibleWith": ["DRV-RELAY-1CH"] },
+
+  { "sku": "ACT-DC-MOTOR", "name": "TT DC Gear Motor with Wheel", "category": "actuator", "packSize": 2, "packPrice": 240, "stock": 13, "image_url": "/img/placeholder/actuator.svg", "compatibleWith": [] },
+  { "sku": "ACT-SERVO-SG90", "name": "SG90 Micro Servo", "category": "actuator", "packSize": 1, "packPrice": 95, "stock": 0, "image_url": "/img/placeholder/actuator.svg", "compatibleWith": ["ACT-SERVO-MG90S"] },
+  { "sku": "ACT-SERVO-MG90S", "name": "MG90S Metal Gear Micro Servo", "category": "actuator", "packSize": 1, "packPrice": 150, "stock": 10, "image_url": "/img/placeholder/actuator.svg", "compatibleWith": ["ACT-SERVO-SG90"] },
+  { "sku": "ACT-PUMP-MINI", "name": "Mini Submersible Water Pump (5V)", "category": "actuator", "packSize": 1, "packPrice": 130, "stock": 15, "image_url": "/img/placeholder/actuator.svg", "compatibleWith": [] },
+  { "sku": "ACT-BUZZER", "name": "Active Buzzer Module", "category": "actuator", "packSize": 1, "packPrice": 35, "stock": 40, "image_url": "/img/placeholder/actuator.svg", "compatibleWith": [] },
+
+  { "sku": "PWR-9V-BATT", "name": "9V Battery with Snap Connector", "category": "power", "packSize": 1, "packPrice": 75, "stock": 35, "image_url": "/img/placeholder/power.svg", "compatibleWith": [] },
+  { "sku": "PWR-18650-HOLDER", "name": "18650 Dual Battery Holder Pack", "category": "power", "packSize": 1, "packPrice": 60, "stock": 20, "image_url": "/img/placeholder/power.svg", "compatibleWith": [] },
+  { "sku": "PWR-BREADBOARD-PSU", "name": "Breadboard Power Supply Module (5V/3.3V)", "category": "power", "packSize": 1, "packPrice": 80, "stock": 18, "image_url": "/img/placeholder/power.svg", "compatibleWith": [] },
+
+  { "sku": "PAS-RES-220", "name": "220 Ohm Resistor", "category": "passive", "packSize": 20, "packPrice": 40, "stock": 60, "image_url": "/img/placeholder/passive.svg", "compatibleWith": ["PAS-RES-330"] },
+  { "sku": "PAS-RES-330", "name": "330 Ohm Resistor", "category": "passive", "packSize": 20, "packPrice": 40, "stock": 55, "image_url": "/img/placeholder/passive.svg", "compatibleWith": ["PAS-RES-220"] },
+  { "sku": "PAS-RES-10K", "name": "10K Ohm Resistor", "category": "passive", "packSize": 20, "packPrice": 40, "stock": 50, "image_url": "/img/placeholder/passive.svg", "compatibleWith": [] },
+  { "sku": "PAS-CAP-100UF", "name": "100uF Electrolytic Capacitor", "category": "passive", "packSize": 10, "packPrice": 50, "stock": 30, "image_url": "/img/placeholder/passive.svg", "compatibleWith": [] },
+  { "sku": "PAS-LED-RED", "name": "5mm Red LED", "category": "passive", "packSize": 20, "packPrice": 30, "stock": 70, "image_url": "/img/placeholder/passive.svg", "compatibleWith": ["PAS-LED-GREEN"] },
+  { "sku": "PAS-LED-GREEN", "name": "5mm Green LED", "category": "passive", "packSize": 20, "packPrice": 30, "stock": 65, "image_url": "/img/placeholder/passive.svg", "compatibleWith": ["PAS-LED-RED"] },
+
+  { "sku": "MISC-BREADBOARD", "name": "830-Point Breadboard", "category": "misc", "packSize": 1, "packPrice": 110, "stock": 26, "image_url": "/img/placeholder/misc.svg", "compatibleWith": [] },
+  { "sku": "MISC-JUMPER-MM", "name": "Male-Male Jumper Wires (40pcs)", "category": "misc", "packSize": 1, "packPrice": 55, "stock": 45, "image_url": "/img/placeholder/misc.svg", "compatibleWith": ["MISC-JUMPER-MF"] },
+  { "sku": "MISC-JUMPER-MF", "name": "Male-Female Jumper Wires (40pcs)", "category": "misc", "packSize": 1, "packPrice": 55, "stock": 38, "image_url": "/img/placeholder/misc.svg", "compatibleWith": ["MISC-JUMPER-MM"] }
+]
