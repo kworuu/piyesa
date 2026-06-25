@@ -7,6 +7,7 @@ const state = {
   chatHistory: [],      // [{role: 'user'|'bot', text}]
   pendingSource: null,  // 'image' | 'url' | 'describe' | 'template'
   pendingPayload: null, // image base64 / url string / text / template id
+  user: null,
 };
 
 // ---------- View management ----------
