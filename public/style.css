@@ -19,9 +19,9 @@
 
 body {
   margin: 0;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   color: var(--ink);
-  background: #f4f5f3;
+  background: url("img/drawables/dashboard_bg.png") center/cover no-repeat fixed;
 }
 
 h1, h2, h3, h4, .logo, .btn, .tab, input, textarea, button {
@@ -55,19 +55,191 @@ h1, h2, h3, h4, .logo, .btn, .tab, input, textarea, button {
 .view { display: none; }
 .view.active { display: block; }
 
+/* ---------- Login ---------- */
+body.login-screen .topbar { display: none; }
+
+#view-login.active {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background-image: url("img/drawables/login_bg.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+#view-login.active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 18, 20, 0.62);
+}
+
+.login-layout {
+  position: relative;
+  width: min(100%, 420px);
+  z-index: 1;
+}
+
+.login-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.login-branding {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.login-branding .brand-accent {
+  color: var(--green);
+}
+
+.login-branding .brand-muted {
+  color: var(--white);
+}
+
+.login-tagline {
+  margin: 10px auto 0;
+  color: var(--white);
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  opacity: 0.9;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.login-title {
+  margin: 0 0 22px;
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.7px;
+}
+
+.login-fields label {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  color: var(--ink);
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.login-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid #111111;
+  padding-bottom: 10px;
+}
+
+.login-input-row input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  color: var(--ink);
+  padding: 10px 0 8px;
+}
+
+.input-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.login-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.login-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.checkbox-label input {
+  width: 16px;
+  height: 16px;
+}
+
+.login-actions-row .text-link {
+  font-size: 12px;
+  color: var(--ink);
+  opacity: 0.75;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-actions-row .text-link:hover {
+  opacity: 1;
+}
+
+.login-card .btn-large {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.login-footer {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.login-footer .text-link {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--green);
+}
+
+.login-footer .text-link:hover {
+  text-decoration: underline;
+}
+
 /* ---------- Hero / Landing ---------- */
 #view-landing.active {
-  background: var(--bg-dark);
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(43,196,106,0.08), transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(43,196,106,0.08), transparent 40%);
   min-height: calc(100vh - 65px);
   padding: 60px 28px 40px;
 }
 .hero { max-width: 720px; margin: 0 auto; text-align: center; color: var(--white); }
 .hero h1 { font-size: 38px; color: var(--green-bright); margin: 0 0 8px; }
-.hero-sub { font-size: 20px; margin: 0 0 14px; }
-.hero-desc { color: #aab0ad; font-family: var(--font-body); font-size: 15px; max-width: 520px; margin: 0 auto 32px; }
+.hero-sub { color: var(--bg-dark);font-size: 20px; margin: 0 0 14px; font-style:var(--bg-dark)}
+.hero-desc { color: black; font-family: var(--font-mono); font-size: 15px; max-width: 520px; margin: 0 auto 32px; }
 
 .upload-card {
   background: var(--white); border-radius: 16px; padding: 24px;
@@ -80,7 +252,7 @@ h1, h2, h3, h4, .logo, .btn, .tab, input, textarea, button {
 .upload-dropzone:hover { background: #f3fbf6; }
 .upload-icon { font-size: 22px; color: var(--green); margin-bottom: 6px; }
 .dropzone-label { color: var(--green); font-weight: 600; margin: 4px 0; }
-.dropzone-sub { color: var(--muted); font-family: var(--font-body); font-size: 13px; margin: 0; }
+.dropzone-sub { color: var(--muted); font-family: var(--font-mono); font-size: 13px; margin: 0; }
 
 .url-row { display: flex; gap: 8px; margin-top: 16px; }
 .url-row input {
@@ -126,7 +298,7 @@ h1, h2, h3, h4, .logo, .btn, .tab, input, textarea, button {
 }
 .template-body { padding: 12px 14px; }
 .template-body h4 { margin: 0 0 4px; font-size: 14px; }
-.template-meta { font-size: 11px; color: var(--muted); font-family: var(--font-body); margin-bottom: 6px; }
+.template-meta { font-size: 11px; color: var(--muted); font-family: var(--font-mono); margin-bottom: 6px; }
 .template-price { color: var(--green); font-weight: 700; font-size: 13px; }
 
 /* ---------- Panel / narrow forms (describe, review) ---------- */
@@ -136,9 +308,9 @@ h1, h2, h3, h4, .logo, .btn, .tab, input, textarea, button {
 }
 .panel-narrow textarea, .panel-narrow input {
   width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
-  font-size: 14px; margin: 10px 0 16px; font-family: var(--font-body);
+  font-size: 14px; margin: 10px 0 16px; font-family: var(--font-mono);
 }
-.muted { color: var(--muted); font-family: var(--font-body); font-size: 13px; }
+.muted { color: var(--muted); font-family: var(--font-mono); font-size: 13px; }
 .center { text-align: center; }
 
 /* ---------- Review list ---------- */
@@ -148,7 +320,7 @@ h1, h2, h3, h4, .logo, .btn, .tab, input, textarea, button {
 }
 .review-row input {
   padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
 }
 .review-row .remove-btn {
   border: none; background: #fdeaea; color: var(--red); border-radius: 6px; cursor: pointer; height: 32px;
