@@ -1,0 +1,16 @@
+{
+  "name": "piyesa",
+  "version": "1.0.0",
+  "description": "Piyesa - AI-powered Bill of Materials generator. Turns maker inspiration (photo, tutorial URL, or template) into a resolved, ready-to-checkout cart of in-stock electronics components.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0",
+    "@google/generative-ai": "^0.21.0"
+  }
+}
