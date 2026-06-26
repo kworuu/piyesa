@@ -170,6 +170,30 @@ document.getElementById("describeSubmitBtn").addEventListener("click", () => {
   showReview();
 });
 
+// ---------- Loading overlay ----------
+let loadingMessageInterval = null;
+
+function showLoadingOverlay(messages) {
+  const overlay = document.getElementById("loadingOverlay");
+  const msgEl = document.getElementById("loadingMessage");
+  let i = 0;
+  msgEl.textContent = messages[0];
+  overlay.classList.remove("hidden");
+
+  clearInterval(loadingMessageInterval);
+  if (messages.length > 1) {
+    loadingMessageInterval = setInterval(() => {
+      i = (i + 1) % messages.length;
+      msgEl.textContent = messages[i];
+    }, 1800);
+  }
+}
+
+function hideLoadingOverlay() {
+  clearInterval(loadingMessageInterval);
+  document.getElementById("loadingOverlay").classList.add("hidden");
+}
+
 // ---------- Budget modal ----------
 function openBudgetModal() {
   document.getElementById("budgetInput").value = "";
@@ -198,7 +222,11 @@ async function proceedWithExtraction() {
     return;
   }
 
-  toast("Analyzing...", 6000);
+  const loadingMessages = state.pendingSource === "image"
+    ? ["Reading your image...", "Identifying components...", "Matching parts to catalog...", "Almost done..."]
+    : ["Fetching the tutorial page...", "Reading through the content...", "Identifying components...", "Almost done..."];
+  showLoadingOverlay(loadingMessages);
+
   try {
     let items = [];
     if (state.pendingSource === "image") {
@@ -222,6 +250,7 @@ async function proceedWithExtraction() {
     }
 
     if (!items || items.length === 0) {
+      hideLoadingOverlay();
       toast("Couldn't identify any parts. Try a clearer image/URL, or describe it manually.", 4000);
       return;
     }
@@ -230,7 +259,10 @@ async function proceedWithExtraction() {
     showReview();
   } catch (err) {
     console.error(err);
+    hideLoadingOverlay();
     toast("Extraction failed: " + err.message, 4500);
+  } finally {
+    hideLoadingOverlay();
   }
 }
 
