@@ -31,6 +31,7 @@ function handleLoginSubmit() {
     return;
   }
 
+  PiyesaAuth.startSession({ email, guest: false });
   toast(`Welcome, ${email.split("@")[0]}! Redirecting...`, 1500);
   setTimeout(() => {
     window.location.href = "/";
@@ -39,10 +40,11 @@ function handleLoginSubmit() {
 
 document.getElementById("loginBtn").addEventListener("click", handleLoginSubmit);
 document.getElementById("guestBtn").addEventListener("click", () => {
+  PiyesaAuth.startSession({ guest: true });
   window.location.href = "/";
 });
 document.getElementById("registerBtn").addEventListener("click", () => {
-  toast("Register is not implemented yet.");
+  window.location.href = "/SignUp/SignUp.html";
 });
 document.getElementById("forgotPasswordBtn").addEventListener("click", () => {
   toast("Forgot password is not implemented yet.");

@@ -1,4 +1,30 @@
-// app.js — Piyesa frontend logic. Plain JS, no framework, no build step.
+const session = PiyesaAuth.requireSession("/login.html");
+// requireSession already redirects if there's no session; bail out of the
+// rest of this script in that case so we don't touch a page that's navigating away.
+if (session) {
+  renderUserChip(session);
+}
+
+function renderUserChip(session) {
+  const chip = document.getElementById("userChip");
+  if (!chip) return;
+  chip.innerHTML = session.guest
+    ? "Browsing as <strong>Guest</strong>"
+    : `Hi, <strong>${escapeHtmlSafe(session.fullName || session.email)}</strong>`;
+}
+
+// Safe even before escapeHtml() is defined further down (hoisted function decl below covers it,
+// but keep a tiny standalone helper here in case this runs before that point).
+function escapeHtmlSafe(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  PiyesaAuth.endSession();
+  window.location.href = "/login.html";
+});
 
 const state = {
   extractedItems: [],   // [{name, quantity}]

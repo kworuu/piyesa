@@ -469,6 +469,74 @@ body.login-screen .topbar { display: none; }
   font-family: var(--font-body); font-size: 13px; z-index: 100;
 }
 
+/* ---------- Login / Signup ---------- */
+body.login-screen {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-dark);
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(43,196,106,0.12), transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(43,196,106,0.12), transparent 40%);
+}
+body.login-screen .topbar { display: none; }
+
+.login-layout { width: 100%; max-width: 440px; }
+.login-header { margin-bottom: 26px; text-align: center; }
+.login-branding { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+.login-branding .brand-accent { color: var(--green); }
+.login-branding .brand-muted { color: var(--white); }
+.login-tagline { margin: 8px 0 0; color: #aab0ad; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.4px; }
+
+.login-card {
+  background: var(--white); border-radius: 16px; padding: 32px 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.login-title { margin: 0 0 22px; font-size: 22px; text-align: center; }
+.login-fields .login-field-row { display: block; margin-bottom: 18px; }
+.field-label { display: block; font-size: 12px; color: var(--muted); font-family: var(--font-body); margin-bottom: 6px; }
+.login-input-row {
+  display: flex; align-items: center; gap: 10px; border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 12px;
+}
+.login-input-row input {
+  flex: 1; border: none; outline: none; font-size: 14px; font-family: var(--font-body);
+  background: transparent; color: var(--ink); padding: 2px 0;
+}
+.input-icon { font-size: 14px; color: var(--muted); }
+.password-wrap { position: relative; }
+.toggle-password {
+  border: none; background: transparent; color: var(--green); font-size: 11px;
+  font-weight: 700; font-family: var(--font-mono); cursor: pointer; padding: 0; letter-spacing: 0.3px;
+}
+.meter { height: 5px; background: #e5ebe8; border-radius: 999px; margin-top: 8px; overflow: hidden; }
+.meter span { display: block; width: 0%; height: 100%; background: var(--red); transition: width 0.2s, background 0.2s; }
+.meter-labels { display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; color: var(--muted); font-family: var(--font-body); }
+.login-actions-row { display: flex; justify-content: space-between; align-items: center; margin: 4px 0 18px; font-family: var(--font-body); font-size: 12px; }
+.text-link.small { font-size: 12px; background: none; border: none; cursor: pointer; }
+.checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink); font-family: var(--font-body); margin: 16px 0 22px; }
+.checkbox-label input { width: 15px; height: 15px; }
+.login-card .btn-large { margin-top: 4px; }
+#guestBtn { margin-top: 10px; }
+.login-footer { margin: 20px 0 0; text-align: center; font-size: 13px; font-family: var(--font-body); }
+.login-footer .text-link { background: none; border: none; cursor: pointer; margin-left: 4px; color: var(--green); font-weight: 600; font-family: var(--font-body); }
+.login-footer .text-link:hover { text-decoration: underline; }
+.status-message { min-height: 20px; margin-top: 10px; text-align: center; font-size: 13px; color: var(--green); font-family: var(--font-body); }
+.status-message.error { color: var(--red); }
+
+/* ---------- Topbar user/session area ---------- */
+.user-chip { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 13px; color: var(--muted); }
+.user-chip strong { color: var(--ink); }
+.logout-link { background: none; border: none; color: var(--green); font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; }
+.logout-link:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .login-card { padding: 26px 20px; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .cart-layout, .checkout-layout { grid-template-columns: 1fr; }
