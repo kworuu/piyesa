@@ -516,6 +516,26 @@ document.getElementById("bomCloseBtn").addEventListener("click", () => {
   document.getElementById("bomModal").classList.add("hidden");
 });
 
+// Click on the dark backdrop (not the white card itself) closes any modal.
+// Excludes #loadingOverlay on purpose — that one shouldn't be dismissible.
+document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+  if (overlay.id === "loadingOverlay") return;
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.classList.add("hidden");
+    }
+  });
+});
+
+// Escape key also closes any open modal.
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".modal-overlay:not(.hidden)").forEach((overlay) => {
+      if (overlay.id !== "loadingOverlay") overlay.classList.add("hidden");
+    });
+  }
+});
+
 function renderBomModal() {
   const cart = state.resolvedCart;
   const tbody = document.getElementById("bomTableBody");
